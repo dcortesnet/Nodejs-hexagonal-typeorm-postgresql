@@ -1,7 +1,7 @@
 import { Todo } from "../domain/todo";
 import { TodoRepository } from "../domain/todo.repository";
 
-export class updateTodoUseCase {
+export class UpdateTodoUseCase {
   private todoRepository: TodoRepository;
 
   constructor(todoRepository: TodoRepository) {
@@ -17,7 +17,10 @@ export class updateTodoUseCase {
       return new Error("Todo does not exist");
     }
     const updatedTodoData = { ...existingTodo, ...updatedData };
-    const updatedTodo = await this.todoRepository.update(uuid, updatedTodoData);
+    const updatedTodo = await this.todoRepository.updateTodo(
+      uuid,
+      updatedTodoData
+    );
     return updatedTodo;
   }
 }

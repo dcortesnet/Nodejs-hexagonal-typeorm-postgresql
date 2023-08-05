@@ -1,14 +1,18 @@
 import { config } from "dotenv";
 import express, { Express, Request, Response } from "express";
 import { AppDataSource } from "./infrastructure/database/connection";
+import todoRouter from "./infrastructure/todo.router";
 
 config();
+
 const app: Express = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello Typescript");
 });
+
+app.use(todoRouter);
 
 AppDataSource.initialize()
   .then(() => {

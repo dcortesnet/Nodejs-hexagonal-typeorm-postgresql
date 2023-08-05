@@ -2,7 +2,10 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import { Todo } from "../../domain/todo";
 
 @Entity()
-class TodoEntity extends Todo {
+export class TodoEntity extends Todo {
+  @PrimaryGeneratedColumn()
+  id!: number;
+
   @Column()
   uuid!: string;
 

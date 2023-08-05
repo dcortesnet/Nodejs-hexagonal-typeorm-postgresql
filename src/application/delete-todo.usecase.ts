@@ -1,7 +1,7 @@
 import { Todo } from "../domain/todo";
 import { TodoRepository } from "../domain/todo.repository";
 
-export class deleteTodoUseCase {
+export class DeleteTodoUseCase {
   private todoRepository: TodoRepository;
 
   constructor(todoRepository: TodoRepository) {
@@ -13,7 +13,7 @@ export class deleteTodoUseCase {
     if (!existingTodo) {
       return new Error("Todo does not exist");
     }
-    await this.todoRepository.delete(uuid);
+    await this.todoRepository.deleteTodo(uuid);
     return uuid;
   }
 }

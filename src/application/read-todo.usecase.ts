@@ -1,7 +1,7 @@
 import { Todo } from "../domain/todo";
 import { TodoRepository } from "../domain/todo.repository";
 
-export class readTodoUseCase {
+export class ReadTodoUseCase {
   private todoRepository: TodoRepository;
 
   constructor(todoRepository: TodoRepository) {
@@ -9,6 +9,6 @@ export class readTodoUseCase {
   }
 
   async execute(): Promise<Todo[]> {
-    return await this.todoRepository.read();
+    return await this.todoRepository.readTodo();
   }
 }

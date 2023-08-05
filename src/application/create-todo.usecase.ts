@@ -14,7 +14,7 @@ export class CreateTodoUseCase {
       throw new Error("Description is missing");
     }
     const newTodo = new Todo(description);
-    const createdTodo = await this.todoRepository.create(newTodo);
+    const createdTodo = await this.todoRepository.createTodo(newTodo);
     return createdTodo;
   }
 }

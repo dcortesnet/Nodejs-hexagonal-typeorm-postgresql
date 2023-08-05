@@ -1,9 +1,9 @@
 import { Todo } from "./todo";
 
 export interface TodoRepository {
-  create(todo: Todo): Promise<Todo>;
+  createTodo(todo: Todo): Promise<Todo>;
   readTodoByUUID(uuid: string): Promise<Todo>;
-  read(): Promise<Todo[]>;
-  update(uuid: string, todo: Todo): Promise<Todo>;
-  delete(uuid: string): Promise<void>;
+  readTodo(): Promise<Todo[]>;
+  updateTodo(uuid: string, todo: Todo): Promise<Todo>;
+  deleteTodo(uuid: string): Promise<void>;
 }

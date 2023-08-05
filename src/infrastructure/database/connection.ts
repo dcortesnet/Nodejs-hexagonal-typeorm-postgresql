@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import { databaseConfig } from "../../config";
+import { TodoEntity } from "./todo.entity";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -10,7 +11,7 @@ export const AppDataSource = new DataSource({
   database: databaseConfig.database,
   synchronize: true,
   logging: true,
-  entities: [],
+  entities: [TodoEntity],
   subscribers: [],
   migrations: [],
 });
