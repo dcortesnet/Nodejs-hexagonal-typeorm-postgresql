@@ -1,12 +1,22 @@
-import express, { Request, Response } from "express";
+import { config } from "dotenv";
+import express, { Express, Request, Response } from "express";
+import { AppDataSource } from "./infrastructure/database/connection";
 
-const app = express();
-const PORT = 3000;
+config();
+const app: Express = express();
+const PORT = process.env.PORT || 3000;
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello Typescript");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listen on port ${PORT}`);
-});
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Data Source has been initialized!");
+    app.listen(PORT, () => {
+      console.log(`Server listen on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Error during Data Source initialization", err);
+  });

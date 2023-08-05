@@ -1,4 +1,4 @@
-import { TodoEntity } from "../domain/todo.entity";
+import { Todo } from "../domain/todo";
 import { TodoRepository } from "../domain/todo.repository";
 
 export class readTodoUseCase {
@@ -8,7 +8,7 @@ export class readTodoUseCase {
     this.todoRepository = todoRepository;
   }
 
-  async execute(): Promise<TodoEntity[]> {
+  async execute(): Promise<Todo[]> {
     return await this.todoRepository.read();
   }
 }

@@ -1,4 +1,4 @@
-import { TodoEntity } from "../domain/todo.entity";
+import { Todo } from "../domain/todo";
 import { TodoRepository } from "../domain/todo.repository";
 
 export class updateTodoUseCase {
@@ -10,8 +10,8 @@ export class updateTodoUseCase {
 
   async execute(
     uuid: string,
-    updatedData: Partial<TodoEntity>
-  ): Promise<TodoEntity | Error> {
+    updatedData: Partial<Todo>
+  ): Promise<Todo | Error> {
     const existingTodo = await this.todoRepository.readTodoByUUID(uuid);
     if (!existingTodo) {
       return new Error("Todo does not exist");

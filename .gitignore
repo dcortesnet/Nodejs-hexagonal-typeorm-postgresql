@@ -15,3 +15,6 @@ package-lock.json
 
 # Windows
 Thumbs.db
+
+# Env
+.env

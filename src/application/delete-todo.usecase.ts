@@ -1,4 +1,4 @@
-import { TodoEntity } from "../domain/todo.entity";
+import { Todo } from "../domain/todo";
 import { TodoRepository } from "../domain/todo.repository";
 
 export class deleteTodoUseCase {

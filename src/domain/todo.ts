@@ -1,6 +1,6 @@
-export class TodoEntity {
+export class Todo {
   uuid: string;
-  description?: string;
+  description: string;
   completed: boolean;
   createdAt: Date;
   updatedAt: Date;
