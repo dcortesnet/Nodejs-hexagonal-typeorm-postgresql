@@ -9,7 +9,7 @@ const todoController = new TodoController(todoRepository);
 
 router.post("/todos", todoController.create);
 router.get("/todos", todoController.read);
-router.patch("/todos", todoController.update);
-router.delete("/todos", todoController.delete);
+router.patch("/todos/:uuid", todoController.update);
+router.delete("/todos/:uuid", todoController.delete);
 
 export default router;

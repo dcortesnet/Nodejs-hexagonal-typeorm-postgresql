@@ -24,8 +24,8 @@ export class TodoRepositoryImpl implements TodoRepository {
       throw new Error("Todo not found.");
     }
     const updatedTodoData = Object.assign(existingTodo, todo);
-    const updatedTodo = await this.repository.save(updatedTodoData);
-    return updatedTodo;
+    await this.repository.update({ uuid }, updatedTodoData);
+    return updatedTodoData;
   }
 
   async deleteTodo(uuid: string): Promise<void> {

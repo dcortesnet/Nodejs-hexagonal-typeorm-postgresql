@@ -8,6 +8,9 @@ config();
 const app: Express = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello Typescript");
 });
