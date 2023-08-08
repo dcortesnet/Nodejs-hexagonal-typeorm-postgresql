@@ -23,8 +23,8 @@ $ npm run dev
 | Type   | Endpoint                                 | Body   |
 | :----- | :--------------------------------------- | :----- |
 | GET    | http://localhost:3000/todo               |        |
-| POST   | http://localhost:3000/todo               |        |
-| PATCH  | http://localhost:3000/todo/:uuid         |        |
+| POST   | http://localhost:3000/todo               |  {"description": "test"}    |
+| PATCH  | http://localhost:3000/todo/:uuid         |  {"description": "test", "completed": false}     |
 | DELETE | http://localhost:3000/todo/:uuid         |        |
 
 ## Team
