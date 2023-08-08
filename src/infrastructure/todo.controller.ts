@@ -66,7 +66,18 @@ export class TodoController {
     }
   };
 
-  delete = (request: Request, response: Response) => {
-    return response.json({ message: "delete" });
+  delete = async (request: Request, response: Response) => {
+    try {
+      const uuid = request.params?.uuid;
+      if (!uuid) {
+        return response
+          .status(400)
+          .json({ message: "The UUID params is required" });
+      }
+      await this.deleteTodoUseCase.execute(uuid);
+      return response.status(200).json({ message: "Resource deleted success" });
+    } catch (error) {
+      return response.status(500).json({ message: "Internal Server Error" });
+    }
   };
 }

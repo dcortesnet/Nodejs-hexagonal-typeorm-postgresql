@@ -29,7 +29,7 @@ export class TodoRepositoryImpl implements TodoRepository {
   }
 
   async deleteTodo(uuid: string): Promise<void> {
-    await this.repository.delete(uuid);
+    await this.repository.delete({ uuid });
   }
 
   async readTodoByUUID(uuid: string): Promise<Todo> {
