@@ -3,7 +3,6 @@ import { CreateTodoUseCase } from "../application/create-todo.usecase";
 import { DeleteTodoUseCase } from "../application/delete-todo.usecase";
 import { ReadTodoUseCase } from "../application/read-todo.usecase";
 import { UpdateTodoUseCase } from "../application/update-todo.usecase";
-import { TodoRepository } from "../domain/todo.repository";
 import { CreateTodoDTO } from "./dto/create-todo.dto";
 import { UpdateTodoDTO } from "./dto/update-todo.dto";
 
@@ -13,14 +12,19 @@ export class TodoController {
   private readTodoUseCase: ReadTodoUseCase;
   private updateTodoUseCase: UpdateTodoUseCase;
 
-  constructor(todoRepository: TodoRepository) {
-    this.createTodoUseCase = new CreateTodoUseCase(todoRepository);
-    this.deleteTodoUseCase = new DeleteTodoUseCase(todoRepository);
-    this.readTodoUseCase = new ReadTodoUseCase(todoRepository);
-    this.updateTodoUseCase = new UpdateTodoUseCase(todoRepository);
+  constructor(
+    createTodoUseCase: CreateTodoUseCase,
+    deleteTodoUseCase: DeleteTodoUseCase,
+    readTodoUseCase: ReadTodoUseCase,
+    updateTodoUseCase: UpdateTodoUseCase
+  ) {
+    this.createTodoUseCase = createTodoUseCase;
+    this.deleteTodoUseCase = deleteTodoUseCase;
+    this.readTodoUseCase = readTodoUseCase;
+    this.updateTodoUseCase = updateTodoUseCase;
   }
 
-  create = async (request: Request, response: Response) => {
+  async create(request: Request, response: Response) {
     try {
       const description = request.body?.description;
       if (!description) {
@@ -34,18 +38,18 @@ export class TodoController {
     } catch (error) {
       return response.status(500).json({ message: "Internal Server Error" });
     }
-  };
+  }
 
-  read = async (request: Request, response: Response) => {
+  async read(request: Request, response: Response) {
     try {
       const todos = await this.readTodoUseCase.execute();
       return response.status(200).json({ todos });
     } catch (error) {
       return response.status(500).json({ message: "Internal Server Error" });
     }
-  };
+  }
 
-  update = async (request: Request, response: Response) => {
+  async update(request: Request, response: Response) {
     try {
       const uuid = request.params?.uuid;
       if (!uuid) {
@@ -64,9 +68,9 @@ export class TodoController {
     } catch (error) {
       return response.status(500).json({ message: "Internal Server Error" });
     }
-  };
+  }
 
-  delete = async (request: Request, response: Response) => {
+  async delete(request: Request, response: Response) {
     try {
       const uuid = request.params?.uuid;
       if (!uuid) {
@@ -79,5 +83,5 @@ export class TodoController {
     } catch (error) {
       return response.status(500).json({ message: "Internal Server Error" });
     }
-  };
+  }
 }

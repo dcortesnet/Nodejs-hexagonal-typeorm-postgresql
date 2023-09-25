@@ -2,6 +2,12 @@
 
 Project makes with Typescript and hexagonal architecture. Project of example with the best practices of the software. Layers Domain, Application, and Infrastructure. The project is a simple API REST of Todo.
 
+## Packages
+
+- TypeORM: https://www.npmjs.com/package/typeorm
+- Nodemon: https://www.npmjs.com/package/nodemon
+- Express: https://www.npmjs.com/package/express
+
 ## Install
 
 Execute command
@@ -20,15 +26,15 @@ $ npm run dev
 
 ## Endpoints
 
-| Type   | Endpoint                                 | Body   |
-| :----- | :--------------------------------------- | :----- |
-| GET    | http://localhost:3000/todo               |        |
-| POST   | http://localhost:3000/todo               |  {"description": "test"}    |
-| PATCH  | http://localhost:3000/todo/:uuid         |  {"description": "test", "completed": false}     |
-| DELETE | http://localhost:3000/todo/:uuid         |        |
+| Type   | Endpoint                         | Body                                        |
+| :----- | :------------------------------- | :------------------------------------------ |
+| GET    | http://localhost:3000/todo       |                                             |
+| POST   | http://localhost:3000/todo       | {"description": "test"}                     |
+| PATCH  | http://localhost:3000/todo/:uuid | {"description": "test", "completed": false} |
+| DELETE | http://localhost:3000/todo/:uuid |                                             |
 
 ## Team
 
 Developed by Diego Cortés
 
-* dcortes.net@gmail.com
+- dcortes.net@gmail.com

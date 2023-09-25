@@ -1,4 +1,3 @@
-import { Todo } from "../domain/todo";
 import { TodoRepository } from "../domain/todo.repository";
 
 export class DeleteTodoUseCase {
